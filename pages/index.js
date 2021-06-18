@@ -52,8 +52,7 @@ export default function Home({ stories }) {
 }
 
 export async function getStaticProps() {
-  const url = `${API_URL}/stories/latest`
-  const response = await fetch(url)
+  const response = await fetch(API_URL)
   const stories = await response.json()
   return {
     props: {

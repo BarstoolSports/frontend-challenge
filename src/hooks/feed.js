@@ -9,7 +9,7 @@ const useFeed = (initialData) => {
   const loadMore = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`${API_URL}/stories/latest?page=${page + 1}`)
+      const response = await fetch(`${API_URL}?page=${page + 1}`)
       const nextData = await response.json()
       setData(dedupe([...data, ...nextData]))
       setPage(page + 1)
@@ -22,7 +22,7 @@ const useFeed = (initialData) => {
   const refresh = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`${API_URL}/stories/latest`)
+      const response = await fetch(API_URL)
       const nextData = await response.json()
       const newData = nextData.filter((d) => new Date(d.date) > new Date(data[0].date))
       setData(dedupe([...newData, ...data]))
