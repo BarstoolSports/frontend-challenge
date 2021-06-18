@@ -30,3 +30,15 @@ You can start by modifying `pages/index.js`.
 ## API Details
 
 The API URL to GET stories can be found in `src/constants/index.js`. This endpoint will return 25 stories by default. You can fetch additional stories by appending the `page` query paramater.
+
+## Design
+
+### `<Story />`
+<img width="581" alt="Screen Shot 2021-06-18 at 1 26 11 PM" src="https://user-images.githubusercontent.com/9220514/122597170-00cbc680-d039-11eb-99d8-c035ddebc510.png">
+
+### `<Feed />`
+<img width="633" alt="Screen Shot 2021-06-18 at 1 30 01 PM" src="https://user-images.githubusercontent.com/9220514/122597441-599b5f00-d039-11eb-96a5-47b51879ee51.png">
+
+### Load More Button
+<img width="580" alt="Screen Shot 2021-06-18 at 1 28 22 PM" src="https://user-images.githubusercontent.com/9220514/122597273-2658d000-d039-11eb-92c9-f293327036a5.png">
+<img width="581" alt="Screen Shot 2021-06-18 at 1 28 42 PM" src="https://user-images.githubusercontent.com/9220514/122597286-2a84ed80-d039-11eb-9c1d-b9b34d1bc6fc.png">
