@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Feed from '../src/components/Feed'
-import { API_URL } from '../src/constants'
 
-export default function Home({ stories }) {
+export default function Home() {
   return (
     <>
       <div className='container'>
@@ -20,7 +18,7 @@ export default function Home({ stories }) {
           />
         </header>
         <main className='main'>
-          <Feed stories={stories} />
+          {/* <Feed /> goes here */}
         </main>
 
         <footer className='footer'>&copy; Barstool Sports</footer>
@@ -49,14 +47,4 @@ export default function Home({ stories }) {
       `}</style>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const response = await fetch(API_URL)
-  const stories = await response.json()
-  return {
-    props: {
-      stories
-    }
-  }
 }
