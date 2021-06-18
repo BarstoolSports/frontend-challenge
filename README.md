@@ -10,7 +10,7 @@ Please complete the following features:
 - Add a Load More button to fetch older stories and add them to the list.
   - There should be a loading state for the button while the data is fetching.
   - Create a custom hook called `useFeed` to implement this feature.
-- Add polling to check for new stories every 30 seconds and prepend them to the feed.
+- Add polling to check for new stories every 10 seconds and prepend them to the feed.
   - Add this functionality to the `useFeed` hook.
   
 ## Getting Started
