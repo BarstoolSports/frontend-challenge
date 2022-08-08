@@ -25,11 +25,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. There are some global styles and basic layout set up on the homepage.
 
-You can start by modifying `pages/index.js`.
+You can start by modifying `pages/index.tsx`.
 
 ## API Details
 
-The API URL to GET stories can be found in `src/constants/index.js`. This endpoint will return 25 stories by default. You can fetch additional stories by appending the `page` query paramater.
+The API URL to GET stories can be found in `src/constants/index.ts`. This endpoint will return 25 stories by default. You can fetch additional stories by appending the `page` query paramater.
 
 ## Design
 
