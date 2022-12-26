@@ -35,7 +35,6 @@ const Feed: React.FC = () => {
   
       const stories = await response.json();
       setIsLoading(false);
-      console.log(length);
       setStories(stories.slice(0, storiesLength));
   };
 
@@ -59,9 +58,9 @@ const Feed: React.FC = () => {
       <div className={styles.feed}>
       <div>
         {
-          stories.map((story) => {
+          stories.map((story, i) => {
             return (
-              <Story story={story}/>
+              <Story story={story} key={i}/>
             );
           })
         }
