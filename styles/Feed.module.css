@@ -1,0 +1,7 @@
+.story {
+  border:solid black .5px;
+  border-color: grey;
+  margin: 10px;
+  display:flex;
+  flex-direction: row;
+}
