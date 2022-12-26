@@ -1,7 +1,60 @@
 .story {
   border:solid black .5px;
   border-color: grey;
-  margin: 10px;
+  margin: 10px 45px;
   display:flex;
   flex-direction: row;
+}
+
+.button {
+  padding: 5px;
+  margin: 5px 100px;
+  background-color: rgb(201, 16, 16);
+  color: white;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgb(157, 15, 15);
+}
+
+.loading {
+  padding: 5px;
+  margin: 5px 100px;
+  background-color: grey;
+  color: white;
+  border-radius: 5px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorDetails {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+
+.authorDetails > p {
+  margin-left:5px;
+}
+
+.storyDetails {
+  display:flex;
+  flex-direction:column;
+}
+
+.storyDetails > p {
+  font-weight:bold;
+  margin:10px 0 50px 0;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.thumbnail {
+  padding: 10px;
 }

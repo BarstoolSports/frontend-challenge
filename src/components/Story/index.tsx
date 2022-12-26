@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import styles from "../../../styles/Feed.module.css"
 
@@ -16,25 +17,21 @@ type StoryProps = {
   }
 }
 
-const storyStyle = {
-  border: "solid black .5px",
-  borderColor: "grey",
-  margin: "10px",
-  display:"flex",
-  flexDirection: 'row' as 'row'
-};
-
 const Story = ({story} : StoryProps) => {
   return (
     <>
-      <div style={styles.story}>
-          <div style={{padding:"10px"}}>
-            <img src={story.thumbnail.raw} height="150px" width="150px"/>
+      <div className={styles.story}>
+          <div className={styles.thumbnail}>
+            <Image alt="Thumbnail for blog" src={story.thumbnail.raw} height="150" width="200"/>
           </div>
-          <div>
-            <p style={{fontWeight:"bold", margin:"10px 0 50px 0"}}>{story.title}</p>  
-            <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
-              <img style={{borderRadius:"50%", margin:"0 10px 0 0"}} src={story.author.avatar} height="20px" width="30px"/>
+          <div className={styles.storyDetails}>
+            <p>{story.title}</p>  
+            <div className={styles.authorDetails}>
+              {story.author.avatar ? (
+                <Image className={styles.avatar} alt="Photo of author" src={story.author.avatar} height="30" width="30"/>
+              ): (
+                <div className="defaultAuthor"></div>
+              )}
               <p>{story.author.name}</p>
             </div>
           </div>

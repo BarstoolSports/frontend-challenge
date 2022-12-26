@@ -1,7 +1,5 @@
-import React, {useState, useEffect, SetStateAction} from "react";
-import { ReactNode } from "react";
+import React, {useState, useEffect} from "react";
 import { API_URL } from "../../constants";
-import Image from "next/image";
 import styles from "../../../styles/Feed.module.css"
 import Story from "../Story";
 
@@ -24,7 +22,6 @@ const Feed: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   async function getStories(length:number) {
-
       setIsLoading(true);
       const response = await fetch(API_URL, {
         method: "GET"
@@ -51,28 +48,15 @@ const Feed: React.FC = () => {
     getStories(storiesLength);
   }
 
-  const buttonStyle = {
-    padding: "5px",
-    backgroundColor: "red",
-    color: "white",
-    borderRadius: "5px",
-  };
-
-  const buttonLoading = {
-    padding: "5px",
-    backgroundColor: "grey",
-    color: "white",
-    borderRadius: "5px",
-  };
 
   return (
     <>
     {isLoading ? (
-      <div>
-        <button style={buttonLoading}>Loading...</button>
+      <div className={styles.loading}>
+        <button className={styles.loading}>Loading...</button>
       </div>
     ) : (
-      <div>
+      <div className={styles.feed}>
       <div>
         {
           stories.map((story) => {
@@ -82,7 +66,7 @@ const Feed: React.FC = () => {
           })
         }
       </div>
-        <button style={buttonStyle} onClick={handleClick}>Load More</button>
+        <button className={styles.button} onClick={handleClick}>Load More</button>
       </div>
     )}
     </>
