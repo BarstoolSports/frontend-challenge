@@ -1,0 +1,230 @@
+$font-proxima-nova: 'proxima-nova', Arial, Helvetica, sans-serif;
+
+@mixin header2() {
+  @include mqViewportSm {
+    font: 600 43px/45.15px $font-proxima-nova;
+  }
+
+  font: 600 28px/29.4px $font-proxima-nova;
+}
+
+@mixin header3() {
+  @include mqViewportSm {
+    font: 600 24px/45.15px $font-proxima-nova;
+  }
+
+  font: 600 16px/29.4px $font-proxima-nova;
+}
+
+@mixin body() {
+  @include mqViewportSm {
+    font: 600 14px/28.5px $font-proxima-nova;
+  }
+
+  font: 600 12px/27px $font-proxima-nova;
+}
+
+@mixin button() {
+  @include body();
+  min-width: 96px;
+  color: $brandWhite;
+  border-radius: 3%;
+  text-align: center;
+  height: $remSpacing5;
+  border: 0;
+  display: inline-block;
+  background-color: $brandBlue1;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $brandBlue2;
+  }
+}
+
+@mixin responsiveTable() {
+  .responsive-table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+      
+    thead {
+      visibility: hidden;
+      background: $brandBlue1;
+      @include mqViewportSm {
+        visibility: visible;
+      }
+    }
+    
+    tr {
+      border: 1px solid $brandGrey3;
+      border-bottom: 2px solid $brandGrey3;
+      padding: 5px;
+      margin-bottom: 10px;
+      display: block;
+      @include mqViewportSm {
+        display: table-row;
+        border-bottom-width: 1px;
+        margin-bottom: 0;
+        
+        &:nth-child(even) {
+          background: $brandBlue1;
+        }
+      }
+    }
+    
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+    
+    th {
+      text-transform: uppercase;
+    }
+      
+    td {
+      display: block;
+      text-align: right;
+      border-bottom: 1px dotted $brandGrey3;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+        
+      @include mqViewportSm{
+        display: table-cell;
+        text-align: left;
+        border-bottom: none;
+      }
+    }
+      
+    td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+      @include mqViewportSm {
+        content: "";
+        display: none;
+      }
+    }
+    p {
+      @include body();
+    }
+  } 
+}
+
+$brandBlack1: #373737;
+$brandBlue1: #128fdc;
+$brandBlue2: #1c9be9;
+$brandGrey3: #000000;
+$brandWhite: #FFFFFF;
+$brandWhite2: #F8F8F8;
+$brandActive: #0D8B7F;
+$brandGrey1: #D8D8D8;
+
+
+$maxPageWidth: 1200px;
+
+$remSpacing1: 0.4rem;
+$remSpacing2: 0.8rem;
+$remSpacing3: 1.6rem;
+$remSpacing4: 2.4rem;
+$remSpacing5: 3.2rem;
+$remSpacing6: 4rem;
+$remSpacing7: 4.8rem;
+$remSpacing8: 5.6rem;
+$remSpacing9: 6.4rem;
+$remSpacing10: 7.2rem;
+$remSpacing11: 8rem;
+
+// viewport variables
+$viewport-xs-width: 320px;
+$viewport-sm-width: 568px;
+$viewport-md-width: 768px;
+$viewport-lg-width: 1024px;
+$viewport-xl-width: 1440px;
+
+$viewport-xxs-max: ($viewport-xs-width - 1);
+$viewport-xs-max: ($viewport-sm-width - 1);
+$viewport-sm-max: ($viewport-md-width - 1);
+$viewport-md-max: ($viewport-lg-width - 1);
+$viewport-lg-max: ($viewport-xl-width - 1);
+
+$headerHeight: 70px;
+$selectWidth: 200px;
+
+@mixin mqViewportXs {
+  @media only screen and (min-width: $viewport-xs-width) {
+    @content;
+  }
+}
+
+@mixin mqViewportSm {
+  @media only screen and (min-width: $viewport-sm-width) {
+    @content;
+  }
+}
+
+@mixin mqViewportMd {
+  @media only screen and (min-width: $viewport-md-width) {
+    @content;
+  }
+}
+
+@mixin mqViewportLg {
+  @media only screen and (min-width: $viewport-lg-width) {
+    @content;
+  }
+}
+
+@mixin mqViewportXl {
+  @media only screen and (min-width: $viewport-xl-width) {
+    @content;
+  }
+}
+
+@mixin mqViewportXxl {
+  @media only screen and (min-width: $viewport-xxl-width) {
+    @content;
+  }
+}
+
+// super specific media queries - use sparingly
+@mixin mqViewportMobile() {
+  @media only screen and (max-width: $viewport-xs-max) {
+    @content;
+  }
+}
+
+@mixin mqViewportMobilePortrait() {
+  @media only screen and (max-width: $viewport-xs-max) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin mqViewportXsOnly() {
+  @media only screen and (max-width: $viewport-xs-max) {
+    @content;
+  }
+}
+
+@mixin mqViewportSmOnly() {
+  @media only screen and (min-width: $viewport-sm-width) and (max-width: $viewport-sm-max) {
+    @content;
+  }
+}
+
+@mixin mqViewportMdOnly() {
+  @media only screen and (min-width: $viewport-md-width) and (max-width: $viewport-md-max) {
+    @content;
+  }
+}
+
+@mixin mqViewportLgOnly() {
+  @media only screen and (min-width: $viewport-lg-width) and (max-width: $viewport-lg-max) {
+    @content;
+  }
+}

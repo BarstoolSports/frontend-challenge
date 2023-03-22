@@ -1,0 +1,66 @@
+@import './mixins.scss';
+
+.feed-loading {
+  width: 100%;
+  padding: $remSpacing2;
+  margin: $remSpacing3;
+  color: $brandWhite;
+  background-color: $brandGrey1;
+  text-align: center;
+}
+
+.feed-card {
+  margin: $remSpacing3;
+  border: 1px solid $brandGrey1;
+  cursor: pointer;
+
+  &-author {
+    &-image {
+      border-radius: 50%;
+      height: 36px;
+      width: 36px;
+      margin-right: $remSpacing2;
+
+      &-not-found {
+        margin-right: $remSpacing2;
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-wrapper {
+    margin: $remSpacing2;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    grid-gap: $remSpacing2;
+  }
+
+  &-title {
+    @include header3();
+    margin-bottom: $remSpacing4;
+    flex: 1;
+  }
+
+  &-image {
+    height: 100%;
+    width: 100%;
+    margin-right: $remSpacing3;
+  }
+}
+
+.load-more-button {
+  width: 100%;
+  padding: $remSpacing2;
+  margin: $remSpacing3;
+  color: $brandWhite;
+  background-color: red;
+}
