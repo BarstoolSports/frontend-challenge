@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@barstoolsports/react-audio-player": "^2.4.0",
     "@zeit/next-sass": "^1.0.1",
     "next": "latest",
     "react": "18.1.0",
