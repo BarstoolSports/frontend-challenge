@@ -10,7 +10,9 @@ export default function Home() {
       </Head>
 
       <header className="px-4 flex justify-center">
-        <Image src="/logo.png" alt="Barstool Sports" width="200" height="64" />
+        <a href="https://www.barstoolsports.com/">
+          <Image src="/logo.png" alt="Barstool Sports" width="200" height="64" />
+        </a>
       </header>
       <main>
         <Feed />
