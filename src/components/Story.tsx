@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { colors, Typography } from '@mui/joy';
 import { truncateMultiLineWithEllipsis, truncateWithEllipsis } from '../utils/style';
 
-const CARD_HEIGHT = 180;
+export const CARD_HEIGHT = 180;
 
 const Container = styled.div`
   border-radius: ${DEFAULT_BORDER_RADIUS}px;
