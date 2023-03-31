@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
+import { Button, CircularProgress, Typography } from '@mui/joy';
 import { DEFAULT_BREAKPOINT, DEFAULT_GAP } from '../constants/style';
 import { useGetFeed } from '../hooks/useGetFeed';
-import { Story } from './Story';
+import { CARD_HEIGHT, Story } from './Story';
+import { MdArrowDownward, MdRefresh } from 'react-icons/md';
+import { Skeleton } from './Skeleton';
 
 const Container = styled.div`
   display: flex;
@@ -16,9 +19,55 @@ const Container = styled.div`
 `;
 
 export const Feed = () => {
-  const { feed } = useGetFeed({});
+  const { feed, errored, incrementPage, loading } = useGetFeed();
 
   const feedComponents = feed.map((story) => <Story key={story.id} story={story} />);
+  const isFirstLoad = !feed.length && loading;
+  const noData = !feed.length && !loading && !errored;
 
-  return <Container>{feedComponents}</Container>;
+  const buttonText = loading ? 'Loading...' : 'Load More';
+  const buttonIcon = loading ? <CircularProgress variant="outlined" /> : <MdArrowDownward />;
+
+  if (errored) {
+    return (
+      <Container>
+        <Typography>
+          There was an error receiving results from the API. Please refresh the page and try again.
+        </Typography>
+        <Button onClick={() => window.location.reload()} startDecorator={<MdRefresh />}>
+          Reload
+        </Button>
+      </Container>
+    );
+  }
+
+  if (noData) {
+    return (
+      <Container>
+        <Typography>No data found.</Typography>
+        <Button onClick={() => window.location.reload()} startDecorator={<MdRefresh />}>
+          Reload
+        </Button>
+      </Container>
+    );
+  }
+
+  if (isFirstLoad) {
+    return (
+      <Container>
+        <Skeleton height={CARD_HEIGHT} />
+        <Skeleton height={CARD_HEIGHT} />
+        <Skeleton height={CARD_HEIGHT} />
+      </Container>
+    );
+  }
+
+  return (
+    <Container>
+      {feedComponents}
+      <Button disabled={loading} onClick={incrementPage} startDecorator={buttonIcon}>
+        {buttonText}
+      </Button>
+    </Container>
+  );
 };
