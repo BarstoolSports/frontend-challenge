@@ -11,7 +11,7 @@ export default function Home() {
 
       <header className="px-4 flex justify-center">
         <a href="https://www.barstoolsports.com/">
-          <Image src="/logo.png" alt="Barstool Sports" width="200" height="64" />
+          <Image alt="Barstool Sports" height="64" priority src="/logo.png" width="200" />
         </a>
       </header>
       <main>
