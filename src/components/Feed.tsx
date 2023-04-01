@@ -19,14 +19,12 @@ const Container = styled.div`
 `;
 
 export const Feed = () => {
-  const { feed, errored, incrementPage, loading } = useGetFeed();
+  const { feed, errored, incrementPage, isFirstLoad, loading, noData } = useGetFeed();
 
   const feedComponents = feed.map((story) => <Story key={story.id} story={story} />);
-  const isFirstLoad = !feed.length && loading;
-  const noData = !feed.length && !loading && !errored;
-
   const buttonText = loading ? 'Loading...' : 'Load More';
   const buttonIcon = loading ? <CircularProgress variant="outlined" /> : <MdArrowDownward />;
+  const refreshPage = () => window.location.reload();
 
   if (errored) {
     return (
@@ -34,7 +32,7 @@ export const Feed = () => {
         <Typography>
           There was an error receiving results from the API. Please refresh the page and try again.
         </Typography>
-        <Button onClick={() => window.location.reload()} startDecorator={<MdRefresh />}>
+        <Button onClick={refreshPage} startDecorator={<MdRefresh />}>
           Reload
         </Button>
       </Container>
@@ -45,7 +43,7 @@ export const Feed = () => {
     return (
       <Container>
         <Typography>No data found.</Typography>
-        <Button onClick={() => window.location.reload()} startDecorator={<MdRefresh />}>
+        <Button onClick={refreshPage} startDecorator={<MdRefresh />}>
           Reload
         </Button>
       </Container>
