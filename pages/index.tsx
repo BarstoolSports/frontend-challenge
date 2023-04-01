@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <div className="max-w-xl mx-auto py-4">
       <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <title>Barstool Sports</title>
       </Head>
 

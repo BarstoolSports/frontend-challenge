@@ -22,8 +22,12 @@ export const Feed = () => {
   const { feed, errored, incrementPage, isFirstLoad, loading, noData } = useGetFeed();
 
   const feedComponents = feed.map((story) => <Story key={story.id} story={story} />);
-  const buttonText = loading ? 'Loading...' : 'Load More';
-  const buttonIcon = loading ? <CircularProgress variant="outlined" /> : <MdArrowDownward />;
+  const buttonText = loading ? (
+    <Typography startDecorator={<CircularProgress variant="outlined" />}> Loading...</Typography>
+  ) : (
+    'Load More'
+  );
+  const buttonColor = loading ? 'neutral' : 'primary';
   const refreshPage = () => window.location.reload();
 
   if (errored) {
@@ -63,7 +67,7 @@ export const Feed = () => {
   return (
     <Container>
       {feedComponents}
-      <Button disabled={loading} onClick={incrementPage} startDecorator={buttonIcon}>
+      <Button color={buttonColor} disabled={loading} onClick={incrementPage} size="lg">
         {buttonText}
       </Button>
     </Container>

@@ -69,11 +69,11 @@ export const useGetFeed = () => {
             );
 
             if (!newStories.length) {
-              toast('No new stories found.');
+              toast('No new stories found.', { id: 'no-new-stories' });
               return feed;
             }
 
-            toast.success('New stories added to the top of the list.');
+            toast.success('New stories added to the top of the list.', { id: 'found-new-stories' });
             return [...newStories, ...feed];
           });
         } catch {
