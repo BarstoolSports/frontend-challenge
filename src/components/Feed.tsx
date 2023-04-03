@@ -3,8 +3,9 @@ import { Button, CircularProgress, Typography } from '@mui/joy';
 import { DEFAULT_BREAKPOINT, DEFAULT_GAP } from '../constants/style';
 import { useGetFeed } from '../hooks/useGetFeed';
 import { CARD_HEIGHT, Story } from './Story';
-import { MdArrowDownward, MdRefresh } from 'react-icons/md';
+import { MdRefresh } from 'react-icons/md';
 import { Skeleton } from './Skeleton';
+import { Stories } from '../types/story';
 
 const Container = styled.div`
   display: flex;
@@ -18,8 +19,14 @@ const Container = styled.div`
   }
 `;
 
-export const Feed = () => {
-  const { feed, errored, incrementPage, isFirstLoad, loading, noData } = useGetFeed();
+interface FeedProps {
+  initialData: Stories;
+}
+
+export const Feed = ({ initialData }: FeedProps) => {
+  const { feed, errored, incrementPage, isFirstLoad, loading, noData } = useGetFeed({
+    initialData,
+  });
 
   const feedComponents = feed.map((story) => <Story key={story.id} story={story} />);
   const buttonText = loading ? (

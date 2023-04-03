@@ -5,11 +5,15 @@ import { Stories } from '../types/story';
 
 const POLLING_WAIT = 10000; // ms
 
-export const useGetFeed = () => {
+interface UseGetFeedOpts {
+  initialData: Stories;
+}
+
+export const useGetFeed = ({ initialData }: UseGetFeedOpts) => {
   const [loading, setLoading] = useState(true);
   // Page 0 and 1 return the same stores. Start at 0 to allow incrementPage to handle incrementing.
   const [page, setPage] = useState(0);
-  const [feed, setFeed] = useState<Stories>([]);
+  const [feed, setFeed] = useState<Stories>(initialData);
   const [errored, setErrored] = useState(false);
 
   const incrementPage = async () => {
@@ -61,7 +65,6 @@ export const useGetFeed = () => {
           }
 
           const json: Stories = await response.json();
-          console.log('here');
 
           setFeed((feed) => {
             const newStories = json.filter(
