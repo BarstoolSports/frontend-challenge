@@ -10,9 +10,11 @@ interface UseGetFeedOpts {
 }
 
 export const useGetFeed = ({ initialData }: UseGetFeedOpts) => {
-  const [loading, setLoading] = useState(true);
-  // Page 0 and 1 return the same stores. Start at 0 to allow incrementPage to handle incrementing.
-  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  // Page 0 and 1 return the same stories. Start at 0 to allow incrementPage
+  // to handle incrementing. Start at 1 if there is initialData present.
+  const initialPage = initialData.length ? 1 : 0;
+  const [page, setPage] = useState(initialPage);
   const [feed, setFeed] = useState<Stories>(initialData);
   const [errored, setErrored] = useState(false);
 
@@ -49,7 +51,10 @@ export const useGetFeed = ({ initialData }: UseGetFeedOpts) => {
       // Alleviate local dev double-load issue.
       initialized = true; // eslint-disable-line react-hooks/exhaustive-deps
 
-      incrementPage();
+      // Only kick off if our server side data didn't come through
+      if (!initialData.length) {
+        incrementPage();
+      }
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

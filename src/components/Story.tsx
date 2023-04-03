@@ -116,7 +116,16 @@ export const Story = ({ story: { author, thumbnail, title, updated_at, url } }: 
       <AuthorImage backgroundImage={author.avatar} />
     ) : null;
 
-  const lastUpdated = new Date(updated_at).toLocaleString();
+  // Must disable hour and minute due to node bug with `U+202f` whitespace with chromium.
+  // https://github.com/nodejs/node/issues/45171
+  const lastUpdated = new Date(updated_at).toLocaleDateString('en-us', {
+    day: 'numeric',
+    // hour: 'numeric',
+    // minute: 'numeric',
+    month: 'short',
+    weekday: 'long',
+    year: 'numeric',
+  });
 
   return (
     <Container>
